@@ -1,0 +1,21 @@
+diff --git a/config/ymake b/config/ymake
+index 7b785bca4..6783f8ebd 100755
+--- a/config/ymake
++++ b/config/ymake
+@@ -632,15 +632,7 @@ cat <<'EOF' >! $outfile
+ 
+ 'EOF'
+ 
+-if (-e /usr/ccs/lib/cpp) then
+-    set cpp = /usr/ccs/lib/cpp
+-else if (-e /opt/ctl/bin/cpp) then
+-    set cpp = /opt/ctl/bin/cpp
+-else if (-e /usr/bin/cpp) then
+-    set cpp = /usr/bin/cpp
+-else
+-  set cpp = /lib/cpp
+-endif
++set cpp = cpp
+ 
+ # set cpp options
+ 
