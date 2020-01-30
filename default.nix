@@ -119,7 +119,7 @@ in stdenv.mkDerivation rec {
   '';
 
   patches = [ ./0001-On-no-branch-ymake-cpp.patch ];
-  
+
   configurePhase = ''
     echo "Configuring for $(uname)"
     echo -e "n\n" | ./Configure
@@ -143,4 +143,10 @@ in stdenv.mkDerivation rec {
       done
     '';
 
+  meta = with stdenv.lib; {
+    description =
+      "The NCAR Command Language (NCL) is a scripting language for the analysis and visualization of climate and weather data. http://www.ncl.ucar.edu";
+    homepage = http://www.ncl.ucar.edu/;
+    # license = license.asl20;
+  };
 }
