@@ -1,0 +1,5 @@
+#+title: NCL.nix
+#+author: Taylor Viti
+#+email: tviti@hawaii.edu
+
+A [[https://nixos.org/nix/][nix]] derivation for the [[https://www.ncl.ucar.edu/][NCAR Command Language]] (NCL).
