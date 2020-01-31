@@ -51,12 +51,10 @@ in stdenv.mkDerivation rec {
     #define LibSearch  -L${hdf4.out}/lib -L${hdf5-fortran}/lib -L${libjpeg}/lib -L${netcdffortran}/lib -L${netcdf}/lib
     #define IncSearch  -I${hdf4.dev}/include -I${hdf5-fortran.dev}/include -I${libjpeg.dev}/include -I${netcdffortran}/include -I${netcdf}/include
 
-    #define BuildRasterHDF 0
-    #define HDFlib
-    #define BuildHDF4 0
-    #define HDFlib
     #define HDFlib -lmfhdf -lhdf -ljpeg
     #define HDF5lib -lhdf5_hl -lhdf5
+    #define BuildRasterHDF 1
+    #define BuildHDF4 1
     #define BuildTRIANGLE 0
     #define BuildUdunits 0
     #define UdUnitslib
