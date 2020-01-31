@@ -14,6 +14,8 @@ in stdenv.mkDerivation rec {
     sha256 = "0ybn4f3mvqxq9k1p9bflbhq4i4yppdnssbq4rz3wigj6k17dcw4i";
   };
 
+  hardeningDisable = [ "format" ];
+  
   nativeBuildInputs = [ makeWrapper ];
 
   buildInputs = [
@@ -73,6 +75,8 @@ in stdenv.mkDerivation rec {
     #define CppCommand  '${gfortran}/bin/cpp -traditional'
     #define LdCommand   ${gfortran}/bin/ld
 
+    #define FcOptions   -fPIC -fno-second-underscore -fno-range-check -fopenmp -std=legacy
+
     #define RmCommand   "${coreutils}/bin/rm -f"
     #define CopyCommand ${coreutils}/bin/cp
     #define MoveCommand ${coreutils}/bin/mv
@@ -107,7 +111,7 @@ in stdenv.mkDerivation rec {
 
     # Either the printf calls need to be patched to include a format string, or
     # the format hardening needs to be turned off (see the nixpkgs manual,
-    # sec. Hardening in Nixpkgs)
+    # sec. Hardening in Nixpkgs) (we may as well fix this anyways though).
     substituteInPlace ni/src/lib/nfp/wrf_vinterpW.c \
       --replace 'fprintf(stderr, errmsg);' 'fprintf(stderr, "%s", errmsg);'
 
