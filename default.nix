@@ -131,7 +131,7 @@ in stdenv.mkDerivation rec {
     make Build
   '';
 
-  postFixup =
+  postInstall =
     let tcshPath = stdenv.lib.strings.escape [ "/" ] "${tcsh}/bin/tcsh";
     in ''
       for i in $out/bin/*; do
@@ -144,6 +144,8 @@ in stdenv.mkDerivation rec {
           --prefix MANPATH : $out/man 
       done
     '';
+
+  dontFixup = true;
 
   meta = with stdenv.lib; {
     description =
