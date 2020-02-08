@@ -2,7 +2,7 @@
 , hdf5-fortran, libjpeg, makedepend, makeWrapper, netcdf, netcdffortran, szip
 , xorg, yacc, zlib, tcsh }:
 
-let xlibs = with xorg; [ libX11 libXaw libXext libXmu libXt libSM libXpm libICE ];
+let xlibs = with xorg; [ libXrender libX11 libXaw libXext libXmu libXt libSM libXpm libICE ];
 in stdenv.mkDerivation rec {
   pname = "NCL";
   version = "6.6.2";
