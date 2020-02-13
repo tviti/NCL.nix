@@ -3,3 +3,13 @@
 #+email: tviti@hawaii.edu
 
 A [[https://nixos.org/nix/][nix]] derivation for the [[https://www.ncl.ucar.edu/][NCAR Command Language]] (NCL).
+
+* Caveats
+  - On Darwin systems (i.e. macOS), I haven't had any success running *any* of
+    the graphical NCAR Computer Graphics Metafile (NCGM) display tools
+    (e.g. =idt=, =ictrans=, and =ctrans -d X11=). The NCAR Graphics libs seem to
+    work ok though (based on linking against them in [[https://github.com/tviti/ROMS-plot.nix][ROMS-plot.nix]]).
+  - On nixOS, I haven't had any success running any of the *interactive*
+    graphical NCGM display tools (e.g. =idt= and =ictrans=). My workaround at
+    the moment is to either use =ctrans -d X11=, or to just dump the NCGM to an
+    hdf file (e.g. ~ctrans -d hdf ./gmeta.ncgm > ./gmeta.hdf~).
