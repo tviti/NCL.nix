@@ -2,7 +2,9 @@
 , hdf5-fortran, libjpeg, makedepend, makeWrapper, netcdf, netcdffortran, szip
 , xorg, yacc, zlib, tcsh }:
 
-let xlibs = with xorg; [ libXrender libX11 libXaw libXext libXmu libXt libSM libXpm libICE ];
+let
+  xlibs = with xorg; [ libXrender libX11 libXaw libXext libXmu libXt libSM libXpm libICE ];
+  cairo-with-x11 = cairo.override { x11Support = true; };
 in stdenv.mkDerivation rec {
   pname = "NCL";
   version = "6.6.2";
@@ -19,7 +21,7 @@ in stdenv.mkDerivation rec {
   nativeBuildInputs = [ makeWrapper ];
 
   buildInputs = [
-    cairo
+    cairo-with-x11
     curl
     flex
     gfortran
