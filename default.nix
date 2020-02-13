@@ -3,7 +3,17 @@
 , xorg, yacc, zlib, tcsh }:
 
 let
-  xlibs = with xorg; [ libXrender libX11 libXaw libXext libXmu libXt libSM libXpm libICE ];
+  xlibs = with xorg; [
+    libXrender
+    libX11
+    libXaw
+    libXext
+    libXmu
+    libXt
+    libSM
+    libXpm
+    libICE
+  ];
   cairo-with-x11 = cairo.override { x11Support = true; };
 in stdenv.mkDerivation rec {
   pname = "NCL";
@@ -17,7 +27,7 @@ in stdenv.mkDerivation rec {
   };
 
   hardeningDisable = [ "format" ];
-  
+
   nativeBuildInputs = [ makeWrapper ];
 
   buildInputs = [
@@ -152,7 +162,7 @@ in stdenv.mkDerivation rec {
   meta = with stdenv.lib; {
     description =
       "The NCAR Command Language (NCL) is a scripting language for the analysis and visualization of climate and weather data. http://www.ncl.ucar.edu";
-    homepage = http://www.ncl.ucar.edu/;
+    homepage = "http://www.ncl.ucar.edu/";
     # license = license.asl20;
   };
 }
